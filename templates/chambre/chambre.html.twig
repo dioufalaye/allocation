@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}ajout chambre{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    <input type="hidden" id="nbrfield" value="{{ nbrField }}">
+    {{ form_widget(form) }}
+    <input type="submit" value="enregistrer">
+    {{ form_end(form) }}
+
+{% endblock %}

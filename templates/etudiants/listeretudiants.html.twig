@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}liste chambre
+{% endblock %}
+ 
+{% block body %}
+    <div class="container">
+   <h2>liste des etudiants</h2>
+            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Matricule</th>
+        <th>Email</th>
+        <th>Telephone</th>
+        <th>Type</th>
+        <th>NumChambre</th>
+        <th>Addresse</th>
+        <th class="w-75 d-flex justify-content-center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+            {% for etudiant in etudiants %}
+            <tr>
+                <td scope="row">{{etudiant.nom}}</td>
+                <td>{{etudiant.prenom}}</td>
+                <td>{{etudiant.matricule}}</td>
+                <td>{{etudiant.email}}</td>
+                <td>{{etudiant.telephone}}</td>
+                <td>{{etudiant.type}}</td>
+                <td>{{etudiant.relation.numchambre}}</td>
+                <td>{{etudiant.addresse}}</td>
+                <td class="w-75 d-flex justify-content-center">
+                    <a name="" id="" class="btn btn-primary" href="{{ path('updateroom', {'id': etudiant.id}) }}">update</a>
+                    <a name="" id="" class="btn btn-danger" href="{{ path('deleteroom', {'id': etudiant.id}) }} "onclick="return confirm ('delete???');">Delete</a>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+            </tbody>
+  </table>
+  <div class="w-100 pt-4 d-flex justify-content-center">
+                {{ knp_pagination_render(etudiants) }}
+            </div>
+</div>
+
+
+{% endblock %}
